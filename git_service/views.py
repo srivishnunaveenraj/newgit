@@ -5,7 +5,7 @@ import git
 
 def get_git_history(request):
     try:
-        repo = git.Repo("/path/to/your/git/repository")  # Replace with the actual path to your Git repository
+        repo = git.Repo("E:\git\services\.git")  # Replace with the actual path to your Git repository
         commit_history = []
 
         for commit in repo.iter_commits():
