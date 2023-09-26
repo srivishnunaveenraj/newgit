@@ -23,3 +23,7 @@ def get_git_history(request):
         return JsonResponse({'history': commit_history})
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
+
+def newcommit():
+    pass
