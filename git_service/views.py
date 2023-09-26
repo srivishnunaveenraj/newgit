@@ -9,6 +9,7 @@ import git
 def view_git_history(request):
     try:
         # Replace 'repo_url' with the URL of the Git repository you want to view
+        # repo_url = "https://github.com/Sriman-narayanan-S/newgit.git"
         repo_url = "https://github.com/Sriman-narayanan-S/newgit.git"
 
         # Open a connection to the remote Git repository
