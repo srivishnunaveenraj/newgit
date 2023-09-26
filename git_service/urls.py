@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     # ... other URL patterns ...
-    path('git-history', views.view_git_history, name='view_git_history'),
+    path('git-history', views.get_git_history, name='view_git_history'),
 ]

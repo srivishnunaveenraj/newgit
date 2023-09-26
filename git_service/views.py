@@ -5,26 +5,27 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import git
 
+# views.py
+from django.http import JsonResponse
+import git
 
-def view_git_history(request):
+
+def get_git_history(request):
     try:
-        repo_url = "https://github.com/Sriman-narayanan-S/newgit.git"
-
-        # Open a connection to the remote Git repository
-        repo = git.Repo(repo_url)
-
-        # Fetch the commit history
+        repo = git.Repo("/path/to/your/git/repository")  # Replace with the actual path to your Git repository
         commit_history = []
+
         for commit in repo.iter_commits():
             commit_info = {
-                "hash": commit.hexsha,
-                "author": commit.author.name,
-                "date": commit.committed_datetime.isoformat(),
-                "message": commit.message,
+                'name': commit.author.name,
+                'message': commit.message,
+                'date': commit.authored_datetime.strftime("%Y-%m-%d"),
+                'time': commit.authored_datetime.strftime("%H:%M:%S"),
+                'sha': commit.hexsha
             }
             commit_history.append(commit_info)
 
-        return JsonResponse({"commit_history": commit_history})
-
+        return JsonResponse({'history': commit_history})
     except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        return JsonResponse({'error': str(e)})
+
